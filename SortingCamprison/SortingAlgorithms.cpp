@@ -198,3 +198,154 @@ void merge(vector<Company>& arr, int start, int mid, int end) {
 		tempArr.pop();
 	}
 }
+
+
+vector<Company> quickSort(vector<Company>& arr, int start, int end)
+{
+	if (start < end)
+	{
+		int pivot = start;
+		int mid = partition(arr, start + 1, end, pivot);
+		quickSort(arr, start, mid - 1);
+		quickSort(arr, mid + 1, end);
+	}
+	return arr;
+}
+int partition(vector<Company>& arr, int start, int end, int pivot)
+{
+	int left = start;
+	int right = end;
+	while (left <= right)
+	{
+		while (left <= end && arr[left].noOfEmplployees < arr[pivot].noOfEmplployees)
+			left++;
+		while (right >= start && arr[right].noOfEmplployees >= arr[pivot].noOfEmplployees)
+			right--;
+		if (left < right)
+			swap(arr[left], arr[right]);
+	}
+	swap(arr[right], arr[pivot]);
+	return right;
+}
+
+
+int parentIndex(int i)
+{
+	return (i - 1) / 2;
+}
+int leftChildIndex(int i)
+{
+	return (2 * i) + 1;
+}
+int rightChildIndex(int i)
+{
+	return (2 * i) + 2;
+}
+void swap(int& a, int& b)
+{
+	int temp = a;
+	a = b;
+	b = temp;
+}
+
+void heapify(vector<Company>& arr, int size, int index) {
+	int maxIndex;
+	while (true) {
+		int lIdx = leftChildIndex(index);
+		int rIdx = rightChildIndex(index);
+		if (rIdx >= size) {
+			if (lIdx >= size)
+				return;
+			else
+				maxIndex = lIdx;
+		}
+		else {
+			if (arr[lIdx].noOfEmplployees >= arr[rIdx].noOfEmplployees)
+				maxIndex = lIdx;
+			else
+				maxIndex = rIdx;
+		}
+		if (arr[index].noOfEmplployees < arr[maxIndex].noOfEmplployees) {
+			swap(arr[index], arr[maxIndex]);
+			index = maxIndex;
+		}
+		else
+			return;
+	}
+}
+vector<Company> heapSort(vector<Company>& arr, int size)
+{
+	for (int x = (size / 2) - 1; x >= 0; x--)
+	{
+		heapify(arr, size, x);
+	}
+	for (int x = size - 1; x > 0; x--)
+	{
+		swap(arr[0], arr[x]);
+		heapify(arr, x, 0);
+	}
+	return arr;
+}
+
+
+vector<Company> countingSort(vector<Company> arr)
+{
+	int max = findMaximumEmployee(arr);
+	vector<int> count(max + 1);
+	vector<Company> output(arr.size());
+	for (int x = 0; x < arr.size(); x++)
+	{
+		count[arr[x].noOfEmplployees]++;
+	}
+	for (int x = 1; x < count.size(); x++)
+	{
+		count[x] = count[x - 1] + count[x];
+	}
+	for (int x = arr.size() - 1; x >= 0; x--)
+	{
+		int index = count[arr[x].noOfEmplployees] - 1;
+		count[arr[x].noOfEmplployees]--;
+		output[index] = arr[x];
+	}
+	return output;
+}
+int findMaximumEmployee(vector<Company>vec) {
+	int max = vec[0].noOfEmplployees;
+	for (auto a : vec) {
+		if (max < a.noOfEmplployees) {
+			max = a.noOfEmplployees;
+		}
+	}
+	return max;
+}
+vector<Company> countingSortWithIndex(vector<Company> arr)
+{
+	int max = findMaximumIndex(arr);
+	vector<int> count(max + 1);
+	vector<Company> output(arr.size());
+	for (int x = 0; x < arr.size(); x++)
+	{
+		count[arr[x].index]++;
+	}
+	for (int x = 1; x < count.size(); x++)
+	{
+		count[x] = count[x - 1] + count[x];
+	}
+	for (int x = arr.size() - 1; x >= 0; x--)
+	{
+		int index = count[arr[x].index] - 1;
+		count[arr[x].index]--;
+		output[index] = arr[x];
+	}
+	return output;
+}
+int findMaximumIndex(vector<Company>vec) {
+	int max = vec[0].index;
+	for (auto a : vec) {
+		if (max < a.index) {
+			max = a.index;
+		}
+	}
+	return max;
+}
+

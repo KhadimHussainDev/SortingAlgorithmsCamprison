@@ -10,3 +10,4 @@ Company::Company(int index, string id, string name, string website, string count
 	this->industry = industry;
 	this->noOfEmplployees = noOfEmployees;
 }
+Company::Company(){}
