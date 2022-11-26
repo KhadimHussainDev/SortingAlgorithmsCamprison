@@ -127,7 +127,7 @@ vector<Company> mergeSortWithIndex(vector<Company>& arr, int start, int end)
 	return arr;
 }
 bool compare(Company a, Company b) {
-	return a.index < b.index;
+	return a.noOfEmplployees < b.noOfEmplployees;
 }
 void mergeWithIndex(vector<Company>& arr, int start, int mid, int end) {
 	int i = start;
@@ -349,3 +349,55 @@ int findMaximumIndex(vector<Company>vec) {
 	return max;
 }
 
+vector<Company> radixSort(vector<Company>& arr)
+{
+	int max = findMaximumEmployee(arr);
+	int place = 1;
+	while ((max / place) > 0)
+	{
+		countingSort(arr, place);
+		place = place * 10;
+	}
+	return arr;
+}
+void countingSort(vector<Company>& arr, int place)
+{
+	vector<int> count(10);
+	vector<Company> output(arr.size());
+	for (int x = 0; x < arr.size(); x++)
+	{
+		count[(arr[x].noOfEmplployees / place) % 10]++;
+	}
+	for (int x = 1; x < count.size(); x++)
+	{
+		count[x] = count[x - 1] + count[x];
+	}
+	for (int x = arr.size() - 1; x >= 0; x--)
+	{
+		int index = count[(arr[x].noOfEmplployees / place) % 10] - 1;
+		count[(arr[x].noOfEmplployees / place) % 10]--;
+		output[index] = arr[x];
+	}
+	arr = output;
+}
+vector<Company> bucketSort(vector<Company> arr,int noOfBuckets) {
+	vector<vector<Company>> bucket(noOfBuckets);
+	for (int x = 0; x < arr.size(); x++)
+	{
+		bucket[int(arr[x].noOfEmplployees % noOfBuckets)].push_back(arr[x]);
+	}
+	for (int x = 0; x < bucket.size(); x++)
+	{
+		sort(bucket[x].begin(), bucket[x].end(), compare);
+	}
+	int index = 0;
+	for (int x = 0; x < bucket.size(); x++)
+	{
+		for (int y = 0; y < bucket[x].size(); y++)
+		{
+			arr[index] = bucket[x][y];
+			index++;
+		}
+	}
+	return arr;
+}

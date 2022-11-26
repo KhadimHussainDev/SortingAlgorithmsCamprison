@@ -98,13 +98,11 @@ int main()
 			}
 			else if (option == 13) {
 				vector <Company>temp = companies;
-				//	sortedCompanies = countingSort(companies);   Radix Sort
+				sortedCompanies = radixSort(companies);
 				companies = temp;
 			}
 			else if (option == 14) {
-				vector <Company>temp = companies;
-				//	sortedCompanies = countingSort(companies);  Bucket Sort
-				companies = temp;
+					sortedCompanies = bucketSort(companies,10000);
 			}
 			else if (option == 15) {
 				break;
@@ -125,4 +123,5 @@ int main()
 		clearScreen();
 	}
 }
+
 

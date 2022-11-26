@@ -27,3 +27,6 @@ vector<Company> countingSort(vector<Company> arr);
 int findMaximumEmployee(vector<Company>vec);
 vector<Company> countingSortWithIndex(vector<Company> arr);
 int findMaximumIndex(vector<Company>vec);
+vector<Company> radixSort(vector<Company>& arr);
+void countingSort(vector<Company>& arr, int place);
+vector<Company> bucketSort(vector<Company> arr, int noOfBuckets) ;
