@@ -13,13 +13,17 @@ int sortingMenu() {
 	cout << "6.Insertion Sort with No of Employee" << endl;
 	cout << "7.Merge Sort with Index" << endl;
 	cout << "8.Merge Sort with No of Employee" << endl;
-	cout << "9.Quick Sort with No of Employee" << endl;
-	cout << "10.Heap Sort with No of Employee" << endl;
-	cout << "11.Countinng Sort with Index" << endl;
-	cout << "12.Countinng Sort with No of Employee" << endl;
-	cout << "13.Radix Sort with No of Employee" << endl;
-	cout << "14.Bucket Sort with No of Employee" << endl;
-	cout << "15.Exit" << endl;
+	cout << "9.Quick Sort with No of Index" << endl;
+	cout << "10.Quick Sort with No of Employee" << endl;
+	cout << "11.Heap Sort with No of Index" << endl;
+	cout << "12.Heap Sort with No of Employee" << endl;
+	cout << "13.Countinng Sort with Index" << endl;
+	cout << "14.Countinng Sort with No of Employee" << endl;
+	cout << "15.Radix Sort with No of Index" << endl;
+	cout << "16.Radix Sort with No of Employee" << endl;
+	cout << "17.Bucket Sort with No of Index" << endl;
+	cout << "18.Bucket Sort with No of Employee" << endl;
+	cout << "19.Exit" << endl;
 
 	cout << "Your Option : ";
 	cin >> option;

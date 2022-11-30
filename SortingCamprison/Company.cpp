@@ -8,6 +8,6 @@ Company::Company(int index, string id, string name, string website, string count
 	this->description = description;
 	this->foundedYear = foundedYear;
 	this->industry = industry;
-	this->noOfEmplployees = noOfEmployees;
+	this->noOfEmployees = noOfEmployees;
 }
 Company::Company(){}

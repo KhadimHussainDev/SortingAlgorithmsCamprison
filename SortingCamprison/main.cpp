@@ -1,34 +1,31 @@
-#include"DataManagement.h"
 #include <time.h>
 #include"Menu.h"
 #include<algorithm>
-
+#include"CompanyDL.h"
 int main()
 {
-
 	vector<Company>companies;
 	string fileName100 = "organizations-100.csv";
 	string fileName1000 = "organizations-1000.csv";
 	string fileName10000 = "organizations-10000.csv";
 	string fileName100000 = "organizations-100000.csv";
 	string fileName500000 = "organizations-500000.csv";
-
 	while (true) {
 		int option = loadDataMenu();
 		if (option == 1) {
-			companies = loadData(fileName100);
+			companies = CompanyDL::loadData(fileName100);
 		}
 		else if (option == 2) {
-			companies = loadData(fileName1000);
+			companies = CompanyDL::loadData(fileName1000);
 		}
 		else if (option == 3) {
-			companies = loadData(fileName10000);
+			companies = CompanyDL::loadData(fileName10000);
 		}
 		else if (option == 4) {
-			companies = loadData(fileName100000);
+			companies = CompanyDL::loadData(fileName100000);
 		}
 		else if (option == 5) {
-			companies = loadData(fileName500000);
+			companies = CompanyDL::loadData(fileName500000);
 		}
 		else if (option == 6) {
 			break;
@@ -48,63 +45,81 @@ int main()
 			clock_t start, end;
 			start = clock();
 			if (option == 1) {
-				sortedCompanies = bubbleSortWithIndex(companies, size);
+				sortedCompanies = CompanyDL::bubbleSortWithIndex(companies, size);
 			}
 			else if (option == 2) {
-				sortedCompanies = bubbleSort(companies, size);
+				sortedCompanies = CompanyDL::bubbleSortWithEmployees(companies, size);
 			}
 			else if (option == 3) {
-				sortedCompanies = selectionSortWithIndex(companies, size);
+				sortedCompanies = CompanyDL::selectionSortWithIndex(companies, size);
 			}
 			else if (option == 4) {
-				sortedCompanies = selectionSort(companies, size);
+				sortedCompanies = CompanyDL::selectionSortWithEmployees(companies, size);
 
 			}
 			else if (option == 5) {
-				sortedCompanies = insertionSortWithIndex(companies, size);
+				sortedCompanies = CompanyDL::insertionSortWithIndex(companies, size);
 			}
 			else if (option == 6) {
-				sortedCompanies = insertionSort(companies, size);
+				sortedCompanies = CompanyDL::insertionSortWithEmployees(companies, size);
 			}
 			else if (option == 7) {
-				vector <Company>temp = companies;
-				sortedCompanies = mergeSortWithIndex(companies, 0, size - 1);
-				companies = temp;
+
+				sortedCompanies = CompanyDL::mergeSortWithIndex(companies, 0, size - 1);
+
 			}
 			else if (option == 8) {
-				vector <Company>temp = companies;
-				sortedCompanies = mergeSort(companies, 0, size - 1);
-				companies = temp;
+
+				sortedCompanies = CompanyDL::mergeSortWithEmployees(companies, 0, size - 1);
+
 			}
 			else if (option == 9) {
-				vector <Company>temp = companies;
-				sortedCompanies = quickSort(companies, 0, size - 1);
-				companies = temp;
+
+				sortedCompanies = CompanyDL::quickSortWithIndex(companies, 0, size - 1);
+
 			}
 			else if (option == 10) {
-				vector <Company>temp = companies;
-				sortedCompanies = heapSort(companies, size - 1);
-				companies = temp;
+
+				sortedCompanies = CompanyDL::quickSortWithEmployees(companies, 0, size - 1);
+
 			}
 			else if (option == 11) {
-				vector <Company>temp = companies;
-				sortedCompanies = countingSortWithIndex(companies);
-				companies = temp;
+
+				sortedCompanies = CompanyDL::heapSortWithIndex(companies, size - 1);
+
 			}
 			else if (option == 12) {
-				vector <Company>temp = companies;
-				sortedCompanies = countingSort(companies);
-				companies = temp;
+
+				sortedCompanies = CompanyDL::heapSortWithEmployees(companies, size - 1);
+
 			}
 			else if (option == 13) {
-				vector <Company>temp = companies;
-				sortedCompanies = radixSort(companies);
-				companies = temp;
+
+				sortedCompanies = CompanyDL::countingSortWithIndex(companies);
+
 			}
 			else if (option == 14) {
-					sortedCompanies = bucketSort(companies,10000);
+
+				sortedCompanies = CompanyDL::countingSortWithEmployees(companies);
+
 			}
 			else if (option == 15) {
+
+				sortedCompanies = CompanyDL::radixSortWithIndex(companies);
+
+			}
+			else if (option == 16) {
+
+				sortedCompanies = CompanyDL::radixSortWithEmployees(companies);
+
+			}
+			else if (option == 17) {
+				sortedCompanies = CompanyDL::bucketSortWithIndex(companies, 5000000);
+			}
+			else if (option == 18) {
+				sortedCompanies = CompanyDL::bucketSortWithEmployyees(companies, 10000);
+			}
+			else if (option == 19) {
 				break;
 			}
 			else {
@@ -116,12 +131,10 @@ int main()
 			end = clock();
 			double time = double(end - start) / double(CLOCKS_PER_SEC);
 			cout << time << " sec Taken." << endl;
-			saveData(sortedCompanies);
+			CompanyDL::saveData(sortedCompanies);
 			cout << "Sorting Done....And Data has been saved." << endl;
 			clearScreen();
 		}
 		clearScreen();
 	}
 }
-
-

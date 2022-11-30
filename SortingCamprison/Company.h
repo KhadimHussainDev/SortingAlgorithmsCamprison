@@ -11,7 +11,7 @@ public:
 	string description;
 	int foundedYear;
 	string industry;
-	int noOfEmplployees;
+	int noOfEmployees;
 	Company(int index, string id, string name, string website, string country, string description, int foundedYear, string industry, int noOfEmployees);
 	Company();
 };

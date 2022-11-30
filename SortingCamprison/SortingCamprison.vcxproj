@@ -128,16 +128,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Company.cpp" />
-    <ClCompile Include="DataManagement.cpp" />
+    <ClCompile Include="CompanyDL.cpp" />
     <ClCompile Include="Menu.cpp" />
-    <ClCompile Include="SortingAlgorithms.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Company.h" />
-    <ClInclude Include="DataManagement.h" />
+    <ClInclude Include="CompanyDL.h" />
     <ClInclude Include="Menu.h" />
-    <ClInclude Include="SortingAlgorithms.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
