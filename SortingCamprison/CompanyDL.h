@@ -8,9 +8,7 @@
 class CompanyDL
 {
 public:
-
-
-
+	vector<Company>companies;
 	static string parse(string line, int index);
 	static vector<Company> loadData(string fileName);
 	static void addTovector(Company company);
@@ -50,5 +48,4 @@ public:
 	static vector<Company> bucketSortWithEmployyees(vector<Company> arr, int noOfBuckets);
 	static vector<Company> bucketSortWithIndex(vector<Company> arr, int noOfBuckets);
 	static void saveData(vector<Company>vec);
-
 };
