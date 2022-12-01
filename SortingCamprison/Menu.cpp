@@ -1,9 +1,9 @@
 #include "Menu.h"
-void clearScreen() {
+void UI:: clearScreen() {
 	system("pause");
 	system("cls");
 }
-int sortingMenu() {
+int UI::sortingMenu() {
 	int option;
 	cout << "1.Bubbles Sort with Index" << endl;
 	cout << "2.Bubbles Sort with No of Employee" << endl;
@@ -29,7 +29,7 @@ int sortingMenu() {
 	cin >> option;
 	return option;
 }
-int loadDataMenu() {
+int UI::loadDataMenu() {
 	int option;
 	cout << "1.Load 100 Records" << endl;
 	cout << "2.Load 1000 Records" << endl;

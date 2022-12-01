@@ -11,7 +11,7 @@ string fileName10000 = "organizations-10000.csv";
 string fileName100000 = "organizations-100000.csv";
 string fileName500000 = "organizations-500000.csv";
 while (true) {
-	int option = loadDataMenu();
+	int option = UI::loadDataMenu();
 	if (option == 1) {
 		company.companies = CompanyDL::loadData(fileName100);
 	}
@@ -37,11 +37,11 @@ while (true) {
 	}
 
 	cout << "Data Loaded...." << endl;
-	clearScreen();
+	UI::clearScreen();
 	int size = company.companies.size();
 	vector<Company>sortedcompany;
 	while (true) {
-		int option = sortingMenu();
+		int option = UI::sortingMenu();
 		clock_t start, end;
 		start = clock();
 		if (option == 1) {
@@ -125,7 +125,7 @@ while (true) {
 		else {
 			cout << "Invalid Option." << endl;
 			cout << "Try Again" << endl;
-			clearScreen();
+			UI::clearScreen();
 			continue;
 		}
 		end = clock();
@@ -133,8 +133,8 @@ while (true) {
 		cout << time << " sec Taken." << endl;
 		CompanyDL::saveData(sortedcompany);
 		cout << "Sorting Done....And Data has been saved." << endl;
-		clearScreen();
+		UI::clearScreen();
 	}
-	clearScreen();
+	UI::clearScreen();
 }
 }
